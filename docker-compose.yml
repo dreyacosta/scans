@@ -9,5 +9,13 @@ services:
       - ./api:/usr/src/app
       - /usr/src/app/node_modules
 
+  dashboard:
+    image: scans-dashboard
+    build: ./dashboard
+    volumes:
+      - npm_cache:/root/.npm
+      - ./dashboard:/usr/src/app
+      - /usr/src/app/node_modules
+
 volumes:
   npm_cache:

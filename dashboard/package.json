@@ -1,0 +1,14 @@
+{
+  "name": "scans-dashboard",
+  "version": "1.0.0",
+  "description": "Scans Dashboard",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "echo \"Hello, world Dashboard!\" && exit 0"
+  },
+  "author": "David Rey <david.rey.acosta@gmail.com>",
+  "license": "MIT"
+}
