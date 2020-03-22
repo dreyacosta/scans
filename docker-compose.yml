@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  api:
+    image: scans-api
+    build: ./api
+    volumes:
+      - npm_cache:/root/.npm
+      - ./api:/usr/src/app
+      - /usr/src/app/node_modules
+
+volumes:
+  npm_cache:
