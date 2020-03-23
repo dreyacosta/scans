@@ -1,6 +1,5 @@
 const faker = require('faker');
 const Uuid = require('../shared/Uuid');
-const FindingDataBuilder = require('./FindingDataBuilder');
 const Scan = require('./Scan');
 
 class ScanDataBuilder {
@@ -9,13 +8,16 @@ class ScanDataBuilder {
       id: Uuid.random(),
       status: 'queued',
       repositoryName: faker.lorem.word(),
-      findings: [
-        new FindingDataBuilder().build(),
-      ],
+      findings: [],
       queuedAt: Date.now(),
       scanningAt: null,
       finishedAt: null,
     };
+  }
+
+  withFinding(finding) {
+    this.attributes.findings.push(finding);
+    return this;
   }
 
   build() {
