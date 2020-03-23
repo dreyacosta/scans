@@ -10,6 +10,7 @@ function respondWith(action) {
         .status(200)
         .json(result);
     } catch(error) {
+      console.error(error);
       return respondWithCode(500, error);
     }
   };
