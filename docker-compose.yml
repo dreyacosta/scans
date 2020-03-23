@@ -21,6 +21,14 @@ services:
       - ./dashboard:/usr/src/app
       - /usr/src/app/node_modules
 
+  mongo:
+    image: mongo:4-xenial
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+
 volumes:
   api_npm_cache:
   dashboard_npm_cache:
+  mongo_data:
