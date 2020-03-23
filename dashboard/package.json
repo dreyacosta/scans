@@ -8,9 +8,11 @@
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^25.1.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
