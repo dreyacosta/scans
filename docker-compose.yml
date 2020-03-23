@@ -5,7 +5,7 @@ services:
     image: scans-api
     build: ./api
     volumes:
-      - npm_cache:/root/.npm
+      - api_npm_cache:/root/.npm
       - ./api:/usr/src/app
       - /usr/src/app/node_modules
 
@@ -16,9 +16,10 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - npm_cache:/root/.npm
+      - dashboard_npm_cache:/root/.npm
       - ./dashboard:/usr/src/app
       - /usr/src/app/node_modules
 
 volumes:
-  npm_cache:
+  api_npm_cache:
+  dashboard_npm_cache:
