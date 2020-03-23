@@ -33,14 +33,5 @@ describe('ScansAPI', () => {
 
       expect(scansMongoRepository.save).toHaveBeenCalled();
     });
-
-    test('returns json with scan created', async () => {
-      const { data: expectedScan } = await scansAPI.create(request);
-
-      expect(expectedScan.id).toEqual(scan.getId());
-      expect(expectedScan.repositoryName).toEqual(scan.getRepositoryName());
-      expect(expectedScan.status).toEqual(scan.getStatus());
-      expect(expectedScan.findings).toEqual(scan.getFindingsCount());
-    });
   });
 });

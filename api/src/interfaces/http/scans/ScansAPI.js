@@ -9,11 +9,9 @@ class ScansAPI {
   async create(request) {
     const scan = this._scanFrom(request);
 
-    const scanResult = await this.repository.save(scan);
+    await this.repository.save(scan);
 
-    return {
-      data: ScanSerializer.toJSON(scanResult),
-    };
+    return {};
   }
 
   _scanFrom(request) {
