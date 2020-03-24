@@ -12,6 +12,7 @@ class ScansRouter {
     const router = Router();
 
     router.post('/scans', respondWith(scansAPI.create.bind(scansAPI)));
+    router.get('/scans', respondWith(scansAPI.fetch.bind(scansAPI)));
 
     return router;
   }
