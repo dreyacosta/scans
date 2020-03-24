@@ -13,6 +13,7 @@ class ScansRouter {
 
     router.post('/scans', respondWith(scansAPI.create.bind(scansAPI)));
     router.get('/scans', respondWith(scansAPI.fetch.bind(scansAPI)));
+    router.get('/scans/:id/findings', respondWith(scansAPI.getFindings.bind(scansAPI)));
 
     return router;
   }

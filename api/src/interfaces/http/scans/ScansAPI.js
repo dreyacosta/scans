@@ -21,6 +21,10 @@ class ScansAPI {
     }
   }
 
+  async getFindings(request) {
+    throw new Error('Not Implemented');
+  }
+
   _scanFrom(request) {
     const { id, repositoryName } = request.body;
 
