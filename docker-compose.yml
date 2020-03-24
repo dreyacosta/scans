@@ -5,6 +5,8 @@ services:
     image: scans-api
     build: ./api
     env_file: ./api/.env
+    ports:
+      - 4000:4000
     volumes:
       - api_npm_cache:/root/.npm
       - ./api:/usr/src/app

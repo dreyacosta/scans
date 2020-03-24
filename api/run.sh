@@ -5,7 +5,7 @@ echo "Application environment: $APP_ENV"
 if [ "$APP_ENV" == "test" ]; then
   npm test
 elif [ "$APP_ENV" == "dev" ]; then
-  echo "Running dev app..."
+  npm start
 else
   npm start
 fi
