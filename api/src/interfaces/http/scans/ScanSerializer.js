@@ -1,6 +1,5 @@
 const ScanSerializer = {
   toJSON(scan) {
-    console.log(scan)
     const { id, repositoryName, status, queuedAt } = scan;
 
     return {

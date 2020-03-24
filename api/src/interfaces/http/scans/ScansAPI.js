@@ -15,7 +15,10 @@ class ScansAPI {
   }
 
   async fetch() {
-    throw new Error('Not implemented');
+    const scans = await this.repository.findAll();
+    return {
+      data: scans.map(ScanSerializer.toJSON),
+    }
   }
 
   _scanFrom(request) {
