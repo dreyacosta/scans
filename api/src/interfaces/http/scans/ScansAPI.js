@@ -1,5 +1,6 @@
 const Scan = require('../../../domain/scans/Scan');
 const ScanSerializer = require('./ScanSerializer');
+const FindingSerializer = require('./FindingSerializer');
 
 class ScansAPI {
   constructor({ scansRepository }) {
@@ -22,7 +23,11 @@ class ScansAPI {
   }
 
   async getFindings(request) {
-    throw new Error('Not Implemented');
+    const { id } = request.params;
+    const findings = await this.repository.getFindings(id);
+    return {
+      data: findings.map(FindingSerializer.toJSON),
+    };
   }
 
   _scanFrom(request) {

@@ -21,6 +21,10 @@ class Scan {
     return this.status;
   }
 
+  getFindings() {
+    return this.findings;
+  }
+
   getFindingsCount() {
     return this.findings.length;
   }

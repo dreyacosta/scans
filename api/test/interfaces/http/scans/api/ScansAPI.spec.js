@@ -1,3 +1,4 @@
+const FindingDataBuilder = require('../../../../../src/domain/scans/FindingDataBuilder');
 const ScanDataBuilder = require('../../../../../src/domain/scans/ScanDataBuilder');
 const ScansAPI = require('../../../../../src/interfaces/http/scans/ScansAPI');
 const ScansMongoRepository = require('../../../../../src/infrastructure/persistence/mongodb/scans/ScansMongoRepository');
@@ -13,17 +14,22 @@ describe('ScansAPI', () => {
   let scansAPI;
 
   beforeEach(() => {
-    scan = new ScanDataBuilder().build();
+    const finding = new FindingDataBuilder().build();
+    scan = new ScanDataBuilder().withFinding(finding).build();
     scan2 = new ScanDataBuilder().build();
     scans = [scan, scan2];
     ScansMongoRepository.prototype.save = jest.fn().mockReturnValue(scan);
     ScansMongoRepository.prototype.findAll = jest.fn().mockReturnValue(scans);
+    ScansMongoRepository.prototype.getFindings = jest.fn().mockReturnValue(scan.getFindings());
     scansMongoRepository = new ScansMongoRepository();
 
     request = {
       body: {
         id: scan.id,
         repositoryName: scan.repositoryName,
+      },
+      params: {
+        id: scan.getId(),
       },
     };
 
@@ -40,7 +46,7 @@ describe('ScansAPI', () => {
     });
   });
 
-  describe('get', () => {
+  describe('get scans', () => {
     test('queries ScansRepository findAll', async () => {
       await scansAPI.fetch({});
 
@@ -55,6 +61,19 @@ describe('ScansAPI', () => {
       expect(scanResult1.status).toEqual(scan.getStatus());
       expect(scanResult2.id).toEqual(scan2.getId());
       expect(scanResult2.status).toEqual(scan2.getStatus());
+    });
+  });
+
+  describe('get findings', () => {
+    test('queries ScansRepository getFindings', async () => {
+      await scansAPI.getFindings(request);
+
+      expect(scansMongoRepository.getFindings).toHaveBeenCalled();
+    });
+
+    test('return findings for specific scan', async () => {
+      const { data } = await scansAPI.getFindings(request);
+      expect(data).toEqual(scan.getFindings());
     });
   });
 });

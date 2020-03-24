@@ -20,6 +20,10 @@ class ScansMongoRepository {
     const results = await this.ScanMongoModel.find({}).lean();
     return results.map(this.ScanMongoMapper.toEntity);
   }
+
+  async getFindings() {
+    throw new Error('Not Implemented');
+  }
 }
 
 module.exports = ScansMongoRepository;
