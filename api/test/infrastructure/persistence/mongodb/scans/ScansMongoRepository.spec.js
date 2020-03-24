@@ -31,4 +31,29 @@ describe('ScansMongoRepository', () => {
     expect(scanResult.getStatus()).toEqual(scan.getStatus());
     expect(scanResult.getRepositoryName()).toEqual(scan.getRepositoryName());
   });
+
+  describe('given 3 scans', () => {
+    let scans = [];
+
+    beforeEach(async (done) => {
+      for (let index = 0; index < 3; index++) {
+        const scan = new ScanDataBuilder().build();
+        await repository.save(scan);
+        scans.push(scan);
+      }
+
+      done();
+    });
+
+    describe('when findAll', () => {
+      test('gets 3 scans', async () => {
+        const scansResult = await repository.findAll();
+
+        const [scanResult1, scanResult2, scanResult3] = scansResult;
+        expect(scanResult1.getId()).toEqual(scans[0].getId());
+        expect(scanResult2.getId()).toEqual(scans[1].getId());
+        expect(scanResult3.getId()).toEqual(scans[2].getId());
+      });
+    });
+  });
 });

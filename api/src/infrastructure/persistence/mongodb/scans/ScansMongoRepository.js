@@ -17,7 +17,8 @@ class ScansMongoRepository {
   }
 
   async findAll() {
-    throw new Error('Not Implemented');
+    const results = await this.ScanMongoModel.find({}).lean();
+    return results.map(this.ScanMongoMapper.toEntity);
   }
 }
 
