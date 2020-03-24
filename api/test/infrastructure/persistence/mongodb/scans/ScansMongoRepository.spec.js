@@ -1,4 +1,5 @@
 const MongoDatabase = require('../../../../../src/infrastructure/persistence/mongodb/MongoDatabase');
+const FindingDataBuilder = require('../../../../../src/domain/scans/FindingDataBuilder');
 const ScanDataBuilder = require('../../../../../src/domain/scans/ScanDataBuilder');
 const ScansMongoRepository = require('../../../../../src/infrastructure/persistence/mongodb/scans/ScansMongoRepository');
 
@@ -33,11 +34,16 @@ describe('ScansMongoRepository', () => {
   });
 
   describe('given 3 scans', () => {
-    let scans = [];
+    let scans;
 
     beforeEach(async (done) => {
+      scans = [];
+
       for (let index = 0; index < 3; index++) {
-        const scan = new ScanDataBuilder().build();
+        const finding = new FindingDataBuilder().build();
+        const scan = new ScanDataBuilder()
+          .withFinding(finding)
+          .build();
         await repository.save(scan);
         scans.push(scan);
       }
@@ -53,6 +59,15 @@ describe('ScansMongoRepository', () => {
         expect(scanResult1.getId()).toEqual(scans[0].getId());
         expect(scanResult2.getId()).toEqual(scans[1].getId());
         expect(scanResult3.getId()).toEqual(scans[2].getId());
+      });
+    });
+
+    describe('when getFindings for specific scan', () => {
+      test('gets findings', async () => {
+        const [scan] = scans;
+        const findingsResult = await repository.getFindings(scan.getId());
+
+        expect(findingsResult).toEqual(scan.getFindings());
       });
     });
   });

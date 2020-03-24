@@ -21,8 +21,10 @@ class ScansMongoRepository {
     return results.map(this.ScanMongoMapper.toEntity);
   }
 
-  async getFindings() {
-    throw new Error('Not Implemented');
+  async getFindings(scanId) {
+    const result = await this.ScanMongoModel.findById(scanId).lean();
+    const scan = this.ScanMongoMapper.toEntity(result);
+    return scan.getFindings();
   }
 }
 

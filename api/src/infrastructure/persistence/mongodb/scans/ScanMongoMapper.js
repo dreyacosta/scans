@@ -12,7 +12,7 @@ const ScanMongoMapper = {
       findings: findings.map((finding) => {
         return new Finding({
           type: finding.type,
-          ruledId: finding.ruleId,
+          ruleId: finding.ruleId,
           location: finding.location,
           metadata: finding.metadata,
         });
@@ -33,7 +33,7 @@ const ScanMongoMapper = {
       findings: findings.map((finding) => {
         return {
           type: finding.type,
-          ruledId: finding.ruleId,
+          ruleId: finding.ruleId,
           location: finding.location,
           metadata: finding.metadata,
         };
