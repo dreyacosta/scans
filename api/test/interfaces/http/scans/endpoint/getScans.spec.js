@@ -24,7 +24,7 @@ describe('GET /scans', () => {
   describe('given three scans', () => {
     let scans = [];
 
-    beforeAll(async (done) => {
+    beforeEach(async (done) => {
       for (let index = 0; index < 3; index++) {
         const scan = new ScanDataBuilder().build();
         await repository.save(scan);
@@ -40,7 +40,9 @@ describe('GET /scans', () => {
           .expect('Content-Type', /json/)
           .expect(200);
 
-        expect(body.data).toEqual(scans);
+        expect(body.data[0].id).toEqual(scans[0].getId());
+        expect(body.data[1].id).toEqual(scans[1].getId());
+        expect(body.data[2].id).toEqual(scans[2].getId());
       });
     });
   });
