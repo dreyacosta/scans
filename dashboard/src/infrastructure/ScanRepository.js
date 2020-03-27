@@ -1,6 +1,14 @@
+import axios from 'axios';
+
 const ScanRepository = () => {
   const submit = async (scan) => {
-    throw new Error('Not Implemented');
+    const { id, repositoryName } = scan;
+
+    await axios
+      .post(`${process.env.API_URL_CLIENT}/scans`, {
+        id,
+        repositoryName,
+      });
   };
 
   return {
