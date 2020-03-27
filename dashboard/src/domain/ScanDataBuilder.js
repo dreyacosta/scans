@@ -8,15 +8,15 @@ class ScanDataBuilder {
       id: v4(),
       status: 'queued',
       repositoryName: faker.lorem.word(),
-      findings: [],
+      findings: 0,
       queuedAt: Date.now(),
       scanningAt: undefined,
       finishedAt: undefined,
     };
   }
 
-  withFinding(finding) {
-    this.attributes.findings.push(finding);
+  withFindings(findings) {
+    this.attributes.findings = findings;
     return this;
   }
 

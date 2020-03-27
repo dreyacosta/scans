@@ -1,5 +1,5 @@
 class Scan {
-  constructor({ id, status, repositoryName, findings = [], queuedAt, scanningAt, finishedAt }) {
+  constructor({ id, status, repositoryName, findings = 0, queuedAt, scanningAt, finishedAt }) {
     this.id = id;
     this.status = status;
     this.repositoryName = repositoryName;
@@ -23,10 +23,6 @@ class Scan {
 
   getFindings() {
     return this.findings;
-  }
-
-  getFindingsCount() {
-    return this.findings.length;
   }
 
   getQueuedAt() {
