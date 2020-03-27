@@ -23,10 +23,12 @@ describe('ScanRepository', () => {
       new ScanDataBuilder().build(),
     ];
     axios.get = jest.fn().mockReturnValue({
-      data: [
+      data: {
+        data: [
         _scanToJSON(scans[0]),
         _scanToJSON(scans[1]),
-      ]
+        ]
+      }
     });
 
     const scansResult = await scanRepository.getAll();
@@ -41,10 +43,12 @@ describe('ScanRepository', () => {
       new FindingDataBuilder().build(),
     ];
     axios.get = jest.fn().mockReturnValue({
-      data: [
-        _findingToJSON(findings[0]),
-        _findingToJSON(findings[1]),
-      ]
+      data: {
+        data: [
+          _findingToJSON(findings[0]),
+          _findingToJSON(findings[1]),
+        ]
+      }
     });
 
     const scanId = 24;

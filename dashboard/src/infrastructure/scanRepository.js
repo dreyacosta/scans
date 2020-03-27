@@ -43,17 +43,17 @@ const ScanRepository = () => {
   };
 
   const getAll = async () => {
-    const { data } = await axios
+    const { data: response } = await axios
       .get(`${process.env.API_URL_SERVER}/scans`);
 
-    return data.map(ScanSerializer.toEntity);
+    return response.data.map(ScanSerializer.toEntity);
   };
 
   const getFindings = async ({ scanId }) => {
-    const { data } = await axios
+    const { data: response } = await axios
       .get(`${process.env.API_URL_SERVER}/scans/${scanId}/findings`);
 
-    return data.map(FindingSerializer.toEntity);
+    return response.data.map(FindingSerializer.toEntity);
   };
 
   return {
