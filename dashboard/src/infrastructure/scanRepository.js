@@ -11,8 +11,13 @@ const ScanRepository = () => {
       });
   };
 
+  const getAll = async () => {
+    throw new Error('Not Implemented');
+  };
+
   return {
     submit,
+    getAll,
   };
 };
 
