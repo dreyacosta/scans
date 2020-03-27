@@ -35,9 +35,14 @@ const ScanRepository = () => {
     return data.map(ScanSerializer.toEntity);
   };
 
+  const getFindings = async ({ scanId }) => {
+    throw new Error('Not Implemented');
+  };
+
   return {
     submit,
     getAll,
+    getFindings,
   };
 };
 
