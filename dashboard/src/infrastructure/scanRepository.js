@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Scan from '../domain/Scan';
+import Finding from '../domain/Finding';
 
 const ScanSerializer = {
   toEntity: (scan) => {
@@ -13,6 +14,19 @@ const ScanSerializer = {
       queuedAt,
       scanningAt,
       finishedAt,
+    });
+  },
+};
+
+const FindingSerializer = {
+  toEntity: (finding) => {
+    const { type, ruleId, location, metadata } = finding;
+
+    return new Finding({
+      type,
+      ruleId,
+      location,
+      metadata,
     });
   },
 };
@@ -36,7 +50,10 @@ const ScanRepository = () => {
   };
 
   const getFindings = async ({ scanId }) => {
-    throw new Error('Not Implemented');
+    const { data } = await axios
+      .get(`${process.env.API_URL_SERVER}/scans/${scanId}/findings`);
+
+    return data.map(FindingSerializer.toEntity);
   };
 
   return {

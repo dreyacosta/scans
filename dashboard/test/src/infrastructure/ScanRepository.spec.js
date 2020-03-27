@@ -1,6 +1,7 @@
 import axios from 'axios';
 import scanRepository from '../../../src/infrastructure/scanRepository';
 import ScanDataBuilder from '../../../src/domain/ScanDataBuilder';
+import FindingDataBuilder from '../../../src/domain/FindingDataBuilder';
 
 jest.mock('axios');
 
@@ -34,6 +35,25 @@ describe('ScanRepository', () => {
     expect(scansResult).toEqual(scans);
   });
 
+  test('submit call findings for specific scan and return all findings', async () => {
+    const findings = [
+      new FindingDataBuilder().build(),
+      new FindingDataBuilder().build(),
+    ];
+    axios.get = jest.fn().mockReturnValue({
+      data: [
+        _findingToJSON(findings[0]),
+        _findingToJSON(findings[1]),
+      ]
+    });
+
+    const scanId = 24;
+    const findingsResult = await scanRepository.getFindings({ scanId });
+
+    expect(axios.get).toHaveBeenCalledWith(`${process.env.API_URL_SERVER}/scans/${scanId}/findings`);
+    expect(findingsResult).toEqual(findings);
+  });
+
   function _scanToJSON(scan) {
     const { id, repositoryName, findings, status, queuedAt, scanningAt, finishedAt } = scan;
 
@@ -45,6 +65,17 @@ describe('ScanRepository', () => {
       queuedAt,
       scanningAt,
       finishedAt,
+    };
+  }
+
+  function _findingToJSON(finding) {
+    const { type, ruleId, location, metadata } = finding;
+
+    return {
+      type,
+      ruleId,
+      location,
+      metadata,
     };
   }
 });
