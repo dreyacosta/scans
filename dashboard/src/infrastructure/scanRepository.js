@@ -16,4 +16,4 @@ const ScanRepository = () => {
   };
 };
 
-export default ScanRepository;
+export default ScanRepository();

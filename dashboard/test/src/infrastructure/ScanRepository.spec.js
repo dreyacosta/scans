@@ -1,13 +1,11 @@
 import { v4 } from 'uuid';
 import axios from 'axios';
-import ScanRepository from '../../../src/infrastructure/ScanRepository';
+import scanRepository from '../../../src/infrastructure/scanRepository';
 import Scan from '../../../src/domain/Scan';
 
 jest.mock('axios');
 
 describe('ScanRepository', () => {
-  const scanRepository = ScanRepository();
-
   test('submit call scan endpoint with given scan', async () => {
     const id = v4();
     const repositoryName = 'scans';

@@ -1,14 +1,12 @@
 import { v4 } from 'uuid';
 import Scan from '../../../src/domain/Scan';
 import SubmitScan from '../../../src/actions/SubmitScan';
-import ScanRepository from '../../../src/infrastructure/ScanRepository';
+import scanRepository from '../../../src/infrastructure/scanRepository';
 
 describe('submitScan', () => {
-  let scanRepository;
   let submitScan;
 
   beforeAll(() => {
-    scanRepository = ScanRepository();
     scanRepository.submit = jest.fn();
     submitScan = SubmitScan({ scanRepository });
   });
