@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Header, Table } from 'semantic-ui-react';
+import { Header, Table, Label } from 'semantic-ui-react';
 
 import Layout from '../components/Layout';
 
@@ -28,7 +28,7 @@ const Scans = ({ scans }) => {
                   <Link href="/findings/[id]" as={`/findings/${scan.id}`}><a>{scan.repositoryName}</a></Link>
                 </Table.Cell>
                 <Table.Cell>{scan.status}</Table.Cell>
-                <Table.Cell>{scan.findings}</Table.Cell>
+                <Table.Cell><Label>{scan.findings}</Label></Table.Cell>
                 <Table.Cell>20 mar 2020</Table.Cell>
               </Table.Row>
             );
