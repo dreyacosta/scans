@@ -12,8 +12,12 @@ const HeaderLayout = () => {
   return (
     <Menu pointing secondary>
       <Menu.Item>
-        <Icon name='circle outline' />
-        <b>GuardRails</b>
+        <Link href="/">
+          <a>
+            <Icon name='circle outline' />
+            <b>GuardRails</b>
+          </a>
+        </Link>
       </Menu.Item>
       <Menu.Menu position='right'>
         <Menu.Item
