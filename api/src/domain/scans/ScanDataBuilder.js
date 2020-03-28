@@ -9,10 +9,17 @@ class ScanDataBuilder {
       status: 'queued',
       repositoryName: faker.lorem.word(),
       findings: [],
-      queuedAt: Date.now(),
+      queuedAt: faker.date.past(),
       scanningAt: null,
       finishedAt: null,
     };
+  }
+
+  withStatusSuccess() {
+    this.attributes.scanningAt = faker.date.past();
+    this.attributes.finishedAt = faker.date.past();
+    this.attributes.status = 'success';
+    return this;
   }
 
   withFinding(finding) {

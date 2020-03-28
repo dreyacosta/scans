@@ -1,22 +1,23 @@
+const faker = require('faker');
 const Finding = require('./Finding');
 
 class FindingDataBuilder {
   constructor() {
     this.attributes = {
-      type: 'sast',
-      ruleId: 'G402',
+      type: faker.system.fileType(),
+      ruleId: `${faker.random.number()}`,
       location: {
-        path: 'connectors/apigateway.go',
+        path: faker.fake("path/{{system.fileName}}"),
         positions: {
           begin: {
-            line: 60
-          }
-        }
+            line: faker.random.number(),
+          },
+        },
       },
       metadata: {
-        description: 'TLS InsecureSkipVerify set true.',
-        severity: 'HIGH'
-      }
+        description: faker.hacker.phrase(),
+        severity: 'HIGH',
+      },
     };
   }
 
