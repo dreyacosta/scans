@@ -1,7 +1,9 @@
 import { Header, Table } from 'semantic-ui-react';
 
 import Layout from '../../components/Layout';
-import FindingDataBuilder from '../../src/domain/FindingDataBuilder';
+
+import { getFindings } from '../../src/actions';
+import GetFindingsPresenter from '../../src/presentation/GetFindingsPresenter';
 
 const Findings = ({ repository, findings }) => {
   return (
@@ -34,35 +36,6 @@ const Findings = ({ repository, findings }) => {
   );
 };
 
-const FindingSerializer = {
-  toJSON: (finding) => {
-    const { ruleId, metadata, location } = finding;
-
-    return {
-      ruleId,
-      description: metadata.description,
-      severity: metadata.severity,
-      pathName: location.path,
-      lineNumber: location.positions.begin.line,
-    };
-  }
-};
-
-export const getServerSideProps = async (context) => {
-  const { id } = context.query;
-  console.log('GetFindings', id);
-
-  const findings = [
-    new FindingDataBuilder().build(),
-    new FindingDataBuilder().build(),
-  ];
-
-  return {
-    props: {
-      repository: id,
-      findings: findings.map(FindingSerializer.toJSON)
-    }
-  }
-};
+export const getServerSideProps = GetFindingsPresenter({ getFindings });
 
 export default Findings;
