@@ -1,9 +1,9 @@
 import { Header, Table } from 'semantic-ui-react';
 
-import Layout from '../../components/Layout';
+import Layout from '../../../components/Layout';
 
-import { getFindings } from '../../src/actions';
-import GetFindingsPresenter from '../../src/presentation/GetFindingsPresenter';
+import { getFindings } from '../../../src/actions';
+import GetFindingsPresenter from '../../../src/presentation/GetFindingsPresenter';
 
 const Findings = ({ repository, findings }) => {
   return (
@@ -26,7 +26,7 @@ const Findings = ({ repository, findings }) => {
                 <Table.Cell>{finding.ruleId}</Table.Cell>
                 <Table.Cell>{finding.description}</Table.Cell>
                 <Table.Cell>{finding.severity}</Table.Cell>
-                <Table.Cell>Line: {finding.lineNumber} {finding.pathName}</Table.Cell>
+                <Table.Cell>{finding.path}</Table.Cell>
               </Table.Row>
             );
           })}

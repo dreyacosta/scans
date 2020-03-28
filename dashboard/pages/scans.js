@@ -25,7 +25,7 @@ const Scans = ({ scans }) => {
             return (
               <Table.Row key={i}>
                 <Table.Cell>
-                  <Link href="/findings/[id]" as={`/findings/${scan.id}`}><a>{scan.repositoryName}</a></Link>
+                  <Link href="/scans/[id]/findings" as={`/scans/${scan.id}/findings`}><a>{scan.repositoryName}</a></Link>
                 </Table.Cell>
                 <Table.Cell>{scan.status}</Table.Cell>
                 <Table.Cell><Label>{scan.findings}</Label></Table.Cell>
