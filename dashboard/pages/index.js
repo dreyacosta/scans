@@ -5,6 +5,8 @@ import { Form, Button, Message } from 'semantic-ui-react';
 
 import Layout from '../components/Layout';
 
+import { submitScan } from '../src/actions';
+
 const Home = () => {
   const [repositoryName, setRepositoryName] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -20,10 +22,10 @@ const Home = () => {
 
   const handleChange = (e, { value }) => setRepositoryName(value);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     loading();
-    console.log(`submitScan ${v4()} - ${repositoryName}`);
-    setTimeout(() => onSuccess(), 4000);
+    await submitScan({ id: v4(), repositoryName });
+    onSuccess();
   };
 
   return (
