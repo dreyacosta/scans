@@ -27,7 +27,7 @@ const Scans = ({ scans }) => {
                 <Table.Cell>
                   <Link href="/scans/[id]/findings" as={`/scans/${scan.id}/findings`}><a>{scan.repositoryName}</a></Link>
                 </Table.Cell>
-                <Table.Cell>{scan.status}</Table.Cell>
+                <Table.Cell><Label>{scan.status}</Label></Table.Cell>
                 <Table.Cell><Label>{scan.findings}</Label></Table.Cell>
                 <Table.Cell>{scan.timestamp}</Table.Cell>
               </Table.Row>
