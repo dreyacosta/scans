@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { v4 } from 'uuid';
-import { Container, Header, List } from 'semantic-ui-react';
-import { Form, Button, Message } from 'semantic-ui-react';
+import { Form, Button, Message, Container, Header, List } from 'semantic-ui-react';
 
 import Layout from '../components/Layout';
 
