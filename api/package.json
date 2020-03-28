@@ -11,7 +11,8 @@
     "express": "^4.17.1",
     "method-override": "^3.0.0",
     "mongoose": "^5.9.5",
-    "uuid": "^7.0.2"
+    "uuid": "^7.0.2",
+    "yargs": "^15.3.1"
   },
   "devDependencies": {
     "faker": "^4.1.0",
@@ -19,8 +20,9 @@
     "supertest": "^4.0.2"
   },
   "scripts": {
-    "test": "jest",
-    "start": "node index.js"
+    "test": "APP_ENV=test jest",
+    "start": "node index.js",
+    "populate:scans": "./src/interfaces/console/scans/create-scans"
   },
   "author": "David Rey <david.rey.acosta@gmail.com>",
   "license": "MIT"
