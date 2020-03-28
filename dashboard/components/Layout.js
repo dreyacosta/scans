@@ -1,6 +1,10 @@
 import Head from 'next/head';
 import Header from './Header';
 
+const container = {
+  padding: '3rem'
+};
+
 const Layout = (props) => {
   return (
     <div>
@@ -9,7 +13,10 @@ const Layout = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      {props.children}
+
+      <section style={container}>
+        {props.children}
+      </section>
     </div>
   );
 };

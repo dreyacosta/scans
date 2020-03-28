@@ -1,11 +1,66 @@
-import Layout from '../components/Layout';
+import Link from 'next/link';
+import { Header, Table } from 'semantic-ui-react';
 
-const Scans = () => {
+import Layout from '../components/Layout';
+import ScanDataBuilder from '../src/domain/ScanDataBuilder';
+
+const Scans = ({ scans }) => {
   return (
     <Layout>
-      <h1>Scans</h1>
+      <Header as='h1'>Scan list</Header>
+      <Table singleLine>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Repository name</Table.HeaderCell>
+            <Table.HeaderCell>Scan status</Table.HeaderCell>
+            <Table.HeaderCell>Findings</Table.HeaderCell>
+            <Table.HeaderCell>Date</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+
+        <Table.Body>
+          {scans.map((scan, i) => {
+            return (
+              <Table.Row key={i}>
+                <Table.Cell>
+                  <Link href="/findings/[id]" as={`/findings/${scan.id}`}><a>{scan.repositoryName}</a></Link>
+                </Table.Cell>
+                <Table.Cell>{scan.status}</Table.Cell>
+                <Table.Cell>{scan.findings}</Table.Cell>
+                <Table.Cell>20 mar 2020</Table.Cell>
+              </Table.Row>
+            );
+          })}
+        </Table.Body>
+      </Table>
     </Layout>
   );
+};
+
+const ScanSerializer = {
+  toJSON: (scan) => {
+    const { id, repositoryName, status, findings } = scan;
+
+    return {
+      id,
+      repositoryName,
+      status,
+      findings
+    };
+  }
+};
+
+export const getServerSideProps = async () => {
+  const scans = [
+    new ScanDataBuilder().build(),
+    new ScanDataBuilder().build(),
+  ];
+
+  return {
+    props: {
+      scans: scans.map(ScanSerializer.toJSON),
+    }
+  };
 };
 
 export default Scans;
