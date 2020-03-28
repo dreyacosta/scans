@@ -1,9 +1,9 @@
 class Finding {
-  constructor({ type, ruleId, location, metadata }) {
-    this.type = type;
+  constructor({ ruleId, description, severity, path }) {
     this.ruleId = ruleId;
-    this.location = location;
-    this.metadata = metadata;
+    this.description = description;
+    this.severity = severity;
+    this.path = path;
   }
 }
 

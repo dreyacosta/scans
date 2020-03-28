@@ -1,13 +1,13 @@
 const FindingSerializer = {
   toJSON(finding) {
-    const { type, ruleId, location, metadata } = finding;
+    const { ruleId, location, metadata } = finding;
 
     return {
-      type,
       ruleId,
-      location,
-      metadata,
-    }
+      description: metadata.description,
+      severity: metadata.severity,
+      path: `${location.path} : ${location.positions.begin.line}`,
+    };
   }
 };
 

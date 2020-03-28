@@ -1,5 +1,6 @@
 import axios from 'axios';
 import scanRepository from '../../../src/infrastructure/scanRepository';
+import FindingRepoSerializer from '../../../src/infrastructure/FindingRepoSerializer';
 import ScanDataBuilder from '../../../src/domain/ScanDataBuilder';
 import FindingDataBuilder from '../../../src/domain/FindingDataBuilder';
 
@@ -45,8 +46,8 @@ describe('ScanRepository', () => {
     axios.get = jest.fn().mockReturnValue({
       data: {
         data: [
-          _findingToJSON(findings[0]),
-          _findingToJSON(findings[1]),
+          FindingRepoSerializer.toJSON(findings[0]),
+          FindingRepoSerializer.toJSON(findings[1]),
         ]
       }
     });
@@ -69,17 +70,6 @@ describe('ScanRepository', () => {
       queuedAt,
       scanningAt,
       finishedAt,
-    };
-  }
-
-  function _findingToJSON(finding) {
-    const { type, ruleId, location, metadata } = finding;
-
-    return {
-      type,
-      ruleId,
-      location,
-      metadata,
     };
   }
 });

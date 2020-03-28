@@ -3,6 +3,7 @@ const MongoDatabase = require('../../../../../src/infrastructure/persistence/mon
 const ScansMongoRepository = require('../../../../../src/infrastructure/persistence/mongodb/scans/ScansMongoRepository');
 const FindingDataBuilder = require('../../../../../src/domain/scans/FindingDataBuilder');
 const ScanDataBuilder = require('../../../../../src/domain/scans/ScanDataBuilder');
+const FindingSerializer = require('../../../../../src/interfaces/http/scans/FindingSerializer');
 
 describe('GET /scans/:id/findings', () => {
   const mongo = new MongoDatabase();
@@ -45,7 +46,7 @@ describe('GET /scans/:id/findings', () => {
           .expect('Content-Type', /json/)
           .expect(200);
 
-        expect(body.data).toEqual(scan.getFindings());
+        expect(body.data).toEqual(scan.getFindings().map(FindingSerializer.toJSON));
       });
     });
   });

@@ -1,6 +1,7 @@
 const FindingDataBuilder = require('../../../../../src/domain/scans/FindingDataBuilder');
 const ScanDataBuilder = require('../../../../../src/domain/scans/ScanDataBuilder');
 const ScansAPI = require('../../../../../src/interfaces/http/scans/ScansAPI');
+const FindingSerializer = require('../../../../../src/interfaces/http/scans/FindingSerializer');
 const ScansMongoRepository = require('../../../../../src/infrastructure/persistence/mongodb/scans/ScansMongoRepository');
 
 jest.mock('../../../../../src/infrastructure/persistence/mongodb/scans/ScansMongoRepository');
@@ -73,7 +74,7 @@ describe('ScansAPI', () => {
 
     test('return findings for specific scan', async () => {
       const { data } = await scansAPI.getFindings(request);
-      expect(data).toEqual(scan.getFindings());
+      expect(data).toEqual(scan.getFindings().map(FindingSerializer.toJSON));
     });
   });
 });

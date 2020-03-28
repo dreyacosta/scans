@@ -3,20 +3,10 @@ import Finding from './Finding';
 class FindingDataBuilder {
   constructor() {
     this.attributes = {
-      type: 'sast',
       ruleId: 'G402',
-      location: {
-        path: 'connectors/apigateway.go',
-        positions: {
-          begin: {
-            line: 60
-          }
-        }
-      },
-      metadata: {
-        description: 'TLS InsecureSkipVerify set true.',
-        severity: 'HIGH'
-      }
+      description: 'TLS InsecureSkipVerify set true.',
+      severity: 'HIGH',
+      path: 'connectors/apigateway.go : 60',
     };
   }
 
