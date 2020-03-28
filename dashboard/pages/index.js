@@ -1,38 +1,9 @@
-import React, { useState } from 'react';
-import Head from 'next/head';
-import { Container, Header, List, Menu, Icon } from 'semantic-ui-react';
+import { Container, Header, List } from 'semantic-ui-react';
+import Layout from '../components/Layout';
 
 const Home = () => {
-  const [activeItem, setActiveItem] = useState('home');
-
-  const handleItemClick = (event, { name }) => setActiveItem(name);
-
   return (
-    <div>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Menu pointing secondary>
-        <Menu.Item>
-          <Icon name='circle outline' />
-          <b>GuardRails</b>
-        </Menu.Item>
-        <Menu.Menu position='right'>
-          <Menu.Item
-            name='submit'
-            active={activeItem === 'submit'}
-            onClick={handleItemClick}
-          />
-          <Menu.Item
-            name='scans'
-            active={activeItem === 'scans'}
-            onClick={handleItemClick}
-          />
-        </Menu.Menu>
-      </Menu>
-
+    <Layout>
       <Container textAlign='center'>
         <Header as='h1'>
           Scans
@@ -47,17 +18,8 @@ const Home = () => {
           <List.Item>See list scans: Check the list of repository scans and click on each scan to see the findings</List.Item>
         </List>
       </Container>
-    </div>
+    </Layout>
   );
-};
-
-const ScanSerializer = {
-  toJSON: (scan) => {
-    return {
-      id: scan.id,
-      repositoryName: scan.repositoryName,
-    };
-  }
 };
 
 export default Home;
