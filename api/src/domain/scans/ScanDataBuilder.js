@@ -7,7 +7,7 @@ class ScanDataBuilder {
   constructor() {
     this.attributes = {
       id: Uuid.random(),
-      status: 'queued',
+      status: 'QUEUED',
       repositoryName: faker.lorem.word(),
       findings: [],
       queuedAt: faker.date.past(),
@@ -19,7 +19,7 @@ class ScanDataBuilder {
   withStatusSuccess() {
     this.attributes.scanningAt = faker.date.past();
     this.attributes.finishedAt = faker.date.past();
-    this.attributes.status = 'success';
+    this.attributes.status = 'SUCCESS';
     return this;
   }
 

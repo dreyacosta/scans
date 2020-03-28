@@ -1,12 +1,10 @@
 class Scan {
-  constructor({ id, status, repositoryName, findings = 0, queuedAt, scanningAt, finishedAt }) {
+  constructor({ id, status, repositoryName, findings = 0, timestamp }) {
     this.id = id;
     this.status = status;
     this.repositoryName = repositoryName;
     this.findings = findings;
-    this.queuedAt = queuedAt;
-    this.scanningAt = scanningAt;
-    this.finishedAt = finishedAt;
+    this.timestamp = timestamp;
   }
 
   getId () {
@@ -25,8 +23,8 @@ class Scan {
     return this.findings;
   }
 
-  getQueuedAt() {
-    return this.queuedAt;
+  queue() {
+    this.status = 'QUEUED';
   }
 }
 

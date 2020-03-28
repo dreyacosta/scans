@@ -33,12 +33,12 @@ class ScansAPI {
   _scanFrom(request) {
     const { id, repositoryName } = request.body;
 
-    return new Scan({
+    const scan = new Scan({
       id,
       repositoryName,
-      status: 'queued',
-      queuedAt: Date.now(),
     });
+    scan.queue();
+    return scan;
   }
 }
 

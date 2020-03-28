@@ -1,3 +1,10 @@
+const TIMESTAMP_MAP = {
+  'QUEUED': 'queuedAt',
+  'IN_PROGRESS': 'scanningAt',
+  'SUCCESS': 'finishedAt',
+  'FAILURE': 'finishedAt',
+};
+
 class Scan {
   constructor({ id, status, repositoryName, findings = [], queuedAt, scanningAt, finishedAt }) {
     this.id = id;
@@ -31,6 +38,16 @@ class Scan {
 
   getQueuedAt() {
     return this.queuedAt;
+  }
+
+  getTimestamp() {
+    const key = TIMESTAMP_MAP[this.status];
+    return this[key];
+  }
+
+  queue() {
+    this.status = 'QUEUED';
+    this.queuedAt = Date.now();
   }
 }
 

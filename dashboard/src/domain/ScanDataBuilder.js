@@ -6,12 +6,10 @@ class ScanDataBuilder {
   constructor() {
     this.attributes = {
       id: v4(),
-      status: 'queued',
+      status: 'QUEUED',
       repositoryName: faker.lorem.word(),
       findings: 0,
-      queuedAt: Date.now(),
-      scanningAt: undefined,
-      finishedAt: undefined,
+      timestamp: Date.now(),
     };
   }
 
@@ -20,8 +18,8 @@ class ScanDataBuilder {
     return this;
   }
 
-  withQueuedAt(queuedAt) {
-    this.attributes.queuedAt = queuedAt;
+  withTimestamp(timestamp) {
+    this.attributes.timestamp = timestamp;
     return this;
   }
 

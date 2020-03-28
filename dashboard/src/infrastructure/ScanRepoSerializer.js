@@ -2,16 +2,14 @@ import Scan from '../domain/Scan';
 
 const ScanRepoSerializer = {
   toEntity: (scan) => {
-    const { id, repositoryName, findings, status, queuedAt, scanningAt, finishedAt } = scan;
+    const { id, repositoryName, findings, status, timestamp } = scan;
 
     return new Scan({
       id,
       repositoryName,
       findings,
       status,
-      queuedAt,
-      scanningAt,
-      finishedAt,
+      timestamp,
     });
   },
 

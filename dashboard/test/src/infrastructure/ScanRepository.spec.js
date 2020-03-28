@@ -60,16 +60,14 @@ describe('ScanRepository', () => {
   });
 
   function _scanToJSON(scan) {
-    const { id, repositoryName, findings, status, queuedAt, scanningAt, finishedAt } = scan;
+    const { id, repositoryName, findings, status, timestamp } = scan;
 
     return {
       id,
       repositoryName,
       findings,
       status,
-      queuedAt,
-      scanningAt,
-      finishedAt,
+      timestamp,
     };
   }
 });

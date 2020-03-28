@@ -11,7 +11,7 @@ describe('submitScan', () => {
   });
 
   test('submit a scan entity to scanRepository', async () => {
-    const scan = new ScanDataBuilder().withQueuedAt(undefined).build();
+    const scan = new ScanDataBuilder().withTimestamp(undefined).build();
 
     await submitScan({ id: scan.getId(), repositoryName: scan.getRepositoryName() });
 

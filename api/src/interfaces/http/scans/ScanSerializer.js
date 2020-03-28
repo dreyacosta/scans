@@ -1,13 +1,13 @@
 const ScanSerializer = {
   toJSON(scan) {
-    const { id, repositoryName, status, queuedAt } = scan;
+    const { id, repositoryName, status } = scan;
 
     return {
       id,
       repositoryName,
       findings: scan.getFindingsCount(),
       status,
-      queuedAt,
+      timestamp: scan.getTimestamp(),
     }
   }
 };

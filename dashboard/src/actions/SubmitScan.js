@@ -4,8 +4,8 @@ const SubmitScan = ({ scanRepository }) => async({ id, repositoryName }) => {
   const scan = new Scan({
     id,
     repositoryName,
-    status: 'queued',
   });
+  scan.queue();
 
   await scanRepository.submit(scan);
 };
