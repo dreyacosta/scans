@@ -2,7 +2,9 @@ import Link from 'next/link';
 import { Header, Table } from 'semantic-ui-react';
 
 import Layout from '../components/Layout';
-import ScanDataBuilder from '../src/domain/ScanDataBuilder';
+
+import { getScans } from '../src/actions';
+import GetScansPresenter from '../src/presentation/GetScansPresenter';
 
 const Scans = ({ scans }) => {
   return (
@@ -37,30 +39,6 @@ const Scans = ({ scans }) => {
   );
 };
 
-const ScanSerializer = {
-  toJSON: (scan) => {
-    const { id, repositoryName, status, findings } = scan;
-
-    return {
-      id,
-      repositoryName,
-      status,
-      findings
-    };
-  }
-};
-
-export const getServerSideProps = async () => {
-  const scans = [
-    new ScanDataBuilder().build(),
-    new ScanDataBuilder().build(),
-  ];
-
-  return {
-    props: {
-      scans: scans.map(ScanSerializer.toJSON),
-    }
-  };
-};
+export const getServerSideProps = GetScansPresenter({ getScans });
 
 export default Scans;
