@@ -1,5 +1,4 @@
 const ScanDataBuilder = require('../domain/scans/ScanDataBuilder');
-const FindingDataBuilder = require('../domain/scans/FindingDataBuilder');
 
 class CreateScans {
   constructor({ scansRepository }) {
@@ -17,9 +16,7 @@ class CreateScans {
   async _createScan() {
     const scan = new ScanDataBuilder()
       .withStatusSuccess()
-      .withFinding(new FindingDataBuilder().build())
-      .withFinding(new FindingDataBuilder().build())
-      .withFinding(new FindingDataBuilder().build())
+      .withRandomFindings()
       .build();
     await this.repository.save(scan);
   }

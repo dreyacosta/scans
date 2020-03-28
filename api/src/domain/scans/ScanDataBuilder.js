@@ -1,6 +1,7 @@
 const faker = require('faker');
 const Uuid = require('../shared/Uuid');
 const Scan = require('./Scan');
+const FindingDataBuilder = require('./FindingDataBuilder');
 
 class ScanDataBuilder {
   constructor() {
@@ -19,6 +20,14 @@ class ScanDataBuilder {
     this.attributes.scanningAt = faker.date.past();
     this.attributes.finishedAt = faker.date.past();
     this.attributes.status = 'success';
+    return this;
+  }
+
+  withRandomFindings() {
+    const number = faker.random.number(20);
+    for (let index = 0; index < number; index++) {
+      this.attributes.findings.push(new FindingDataBuilder().build());
+    }
     return this;
   }
 
