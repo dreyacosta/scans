@@ -16,7 +16,7 @@ const Home = () => {
     setRepositoryName('');
     setSubmitting(false);
     setSuccess(true);
-    setTimeout(() => setSuccess(false), 4000);
+    setTimeout(() => setSuccess(false), 1000);
   };
 
   const handleChange = (e, { value }) => setRepositoryName(value);
