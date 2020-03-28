@@ -29,7 +29,7 @@ const Scans = ({ scans }) => {
                 </Table.Cell>
                 <Table.Cell>{scan.status}</Table.Cell>
                 <Table.Cell><Label>{scan.findings}</Label></Table.Cell>
-                <Table.Cell>20 mar 2020</Table.Cell>
+                <Table.Cell>{scan.queuedAt}</Table.Cell>
               </Table.Row>
             );
           })}
