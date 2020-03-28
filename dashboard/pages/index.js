@@ -50,12 +50,12 @@ const Home = () => {
             placeholder='Enter the repository name'
             required
           />
+          <Button>Submit</Button>
           <Message
             success
             header='Scan submitted'
             content="Our services are looking for vulnerabilities in your repository"
           />
-          <Button>Submit</Button>
         </Form>
       </Container>
     </Layout>
