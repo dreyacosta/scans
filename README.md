@@ -36,7 +36,7 @@ By default the application populates 5 scans and runs on: [http://localhost:3000
 - Not implemented: APM, Logging, Error monitoring. Important thing to know how the service behaves. Ideas: New Relic, Rollbar, Sentry, Grafana, Prometheus
 
 #### Architecture idea
-![scans-architecture-idea](http://scans-architecture-idea.png)
+![scans-architecture-idea](https://user-images.githubusercontent.com/1833123/77845519-18275580-71e2-11ea-93c3-50418c877035.png)
 
 ### Dashboard
 #### Comments
