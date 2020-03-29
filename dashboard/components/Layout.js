@@ -9,7 +9,7 @@ const Layout = (props) => {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Scans - Your repositories alerts for ulnerabilities</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
