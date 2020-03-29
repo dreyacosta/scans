@@ -1,4 +1,6 @@
 # Scans
+[![Build Status](https://travis-ci.org/dreyacosta/scans.svg?branch=master)](https://travis-ci.org/dreyacosta/scans)
+
 Scans your repositories to alert you of any vulnerabilities and security issues.
 
 ## Setup
