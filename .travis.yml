@@ -1,0 +1,9 @@
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: "test-api"
+      script: cd api && ./bin/test.sh
+    - stage: "test-dashboard"
+      script: cd dashboard && ./bin/test.sh
