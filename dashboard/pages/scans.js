@@ -29,7 +29,13 @@ const Scans = ({ scans }) => {
                     ? <Link href="/scans/[id]/findings" as={`/scans/${scan.id}/findings`}><a>{scan.repositoryName}</a></Link>
                     : <span>{scan.repositoryName}</span>}
                 </Table.Cell>
-                <Table.Cell><Label>{scan.status}</Label></Table.Cell>
+                <Table.Cell>
+                  {scan.status === 'SUCCESS'
+                    ? <Label color={'green'}>{scan.status}</Label>
+                    : scan.status === 'FAILURE'
+                      ? <Label color={'red'}>{scan.status}</Label>
+                      : <Label>{scan.status}</Label>}
+                </Table.Cell>
                 <Table.Cell><Label>{scan.findings}</Label></Table.Cell>
                 <Table.Cell>{scan.timestamp}</Table.Cell>
               </Table.Row>
