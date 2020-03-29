@@ -7,6 +7,5 @@ if [ "$APP_ENV" == "test" ]; then
 elif [ "$APP_ENV" == "dev" ]; then
   npm run dev
 else
-  npm build
   npm start
 fi

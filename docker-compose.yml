@@ -38,6 +38,7 @@ services:
       - dashboard_npm_cache:/root/.npm
       - ./dashboard:/usr/src/app
       - /usr/src/app/node_modules
+      - /usr/src/app/.next
 
   mongo:
     image: mongo:4-xenial
