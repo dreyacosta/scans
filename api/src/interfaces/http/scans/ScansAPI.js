@@ -19,7 +19,7 @@ class ScansAPI {
     const scans = await this.repository.findAll();
     return {
       data: scans.map(ScanSerializer.toJSON),
-    }
+    };
   }
 
   async getFindings(request) {

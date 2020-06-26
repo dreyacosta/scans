@@ -8,7 +8,7 @@ const ScanSerializer = {
       findings: scan.getFindingsCount(),
       status,
       timestamp: scan.getTimestamp(),
-    }
+    };
   }
 };
 
