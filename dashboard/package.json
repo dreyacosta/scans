@@ -4,7 +4,7 @@
   "description": "Scans Dashboard",
   "main": "index.js",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "faker": "^4.1.0",
     "next": "9.3.2",
